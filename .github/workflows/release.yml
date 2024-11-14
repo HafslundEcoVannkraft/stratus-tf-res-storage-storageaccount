@@ -6,6 +6,7 @@ on:
       - main
 
 permissions:
+  actions: read
   contents: write  # Allows the workflow to create tags and releases
 
 jobs:
