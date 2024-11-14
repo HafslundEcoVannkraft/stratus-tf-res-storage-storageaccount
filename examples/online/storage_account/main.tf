@@ -25,7 +25,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 module "azapi-module-storage-account" {
-  source               = "git::ssh://git@github.com/HafslundEcoVannkraft/stratus-terraform-modules.git//modules/storage_account?ref=main"
+  source               = "github.com/HafslundEcoVannkraft/stratus-terraform-modules.git//modules/storage_account?ref=v0.1.0"
   depends_on           = [azurerm_resource_group.rg]
   rg_name              = azurerm_resource_group.rg.name
   storage_account_name = local.sa_name
