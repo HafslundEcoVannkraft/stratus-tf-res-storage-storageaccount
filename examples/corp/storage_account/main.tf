@@ -36,11 +36,8 @@ resource "azurerm_resource_group" "rg" {
   }
 }
 
-# For this method to work with internal repo we might need to run this in GitHub Action. Testing in progress.
-# git config --global url."https://${GITHUB_TOKEN}@github.com".insteadOf "https://github.com"
-
 module "azapi-module-storage-account" {
-  source               = "https://github.com/HafslundEcoVannkraft/stratus-tf-res-storage-storageaccount?ref=main"
+  source               = "github.com/HafslundEcoVannkraft/stratus-tf-res-storage-storageaccount?ref=v0.1.0"
   depends_on           = [azurerm_resource_group.rg]
   rg_name              = azurerm_resource_group.rg.name
   storage_account_name = local.sa_name
