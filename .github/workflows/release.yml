@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run version bump and release action
-        uses: github.com/HafslundEcoVannkraft/stratus-az-platform-workflows/.github/actions/release@feat/composite-actions    
+        uses: HafslundEcoVannkraft/stratus-az-platform-workflows/.github/actions/release@feat/composite-actions    
         with:
           draft: "false"
           prerelease: "false"
