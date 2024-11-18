@@ -1,0 +1,17 @@
+name: Draft Release
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [ main ]
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  call-draft-release:
+    uses: HafslundEcoVannkraft/stratus-gh-actions/.github/workflows/reusable-draft-release.yml@v1.1.0
+    with:
+      openai_context: "This repo is a terraform module repository and the release notes should focus on the module capabilities. Examples configuraitons can be mentioned but should not be in focus for the release notes. Repository workflows, license and terraform doc setup is not relevant for the release notes."
+    secrets: inherit
