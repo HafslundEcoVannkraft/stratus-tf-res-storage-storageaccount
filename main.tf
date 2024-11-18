@@ -140,7 +140,7 @@ resource "azapi_resource" "storage_account_v2" {
       }
       networkAcls = {
         defaultAction = "Deny"
-        bypass        = "None"
+        bypass        = var.network_acls_bypass
         #virtualNetworkRules = local.virtual_network_rules
       }
     }
@@ -223,8 +223,9 @@ resource "time_sleep" "wait_for_private_dns_zone_policy_v2" {
 }
 
 resource "azapi_resource" "container_v2" {
+  for_each  = toset(var.container_names)
   type      = "Microsoft.Storage/storageAccounts/blobServices/containers@2023-01-01"
-  name      = "tfstate"
+  name      = each.value
   parent_id = "${azapi_resource.storage_account_v2.id}/blobServices/default"
   body = {
     properties = {
