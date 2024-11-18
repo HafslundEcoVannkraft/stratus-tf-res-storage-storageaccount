@@ -1,26 +1,15 @@
-name: Version Bump and Release
-
+name: Draft Release
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [ main ]
 
 permissions:
-  actions: read
-  contents: write  # Allows the workflow to create tags and releases
+  id-token: write
+  contents: write
+  pull-requests: write
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run version bump and release action
-        uses: HafslundEcoVannkraft/stratus-gh-actions/.github/actions/release@v0.1.0           
-        with:
-          draft: "false"
-          prerelease: "false"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  call-draft-release:
+    uses: HafslundEcoVannkraft/stratus-gh-actions/.github/workflows/reusable-draft-release.yml@v1.1.0
+    secrets: inherit
