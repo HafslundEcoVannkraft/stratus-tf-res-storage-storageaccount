@@ -17,6 +17,7 @@ variable "location" {
 variable "pe_subnets" {
   type        = list(string)
   description = "List of subnets to create private endpoints for"
+  default     = []
 }
 
 variable "container_names" {
@@ -26,7 +27,7 @@ variable "container_names" {
 }
 
 variable "network_acls_bypass" {
-  type = string
+  type        = string
   description = "The network ACLs bypass value. Possible values are `AzureServices`, `None`, and `VirtualNetwork`."
-  default = "None"
+  default     = "None"
 }
