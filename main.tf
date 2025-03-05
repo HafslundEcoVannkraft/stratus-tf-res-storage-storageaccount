@@ -141,6 +141,11 @@ resource "azapi_resource" "storage_account_v2" {
       networkAcls = {
         defaultAction = "Deny"
         bypass        = var.network_acls_bypass
+        ipRules = [
+          for ip in var.ip_address_allowlist : {
+            value = ip
+          }
+        ]
         #virtualNetworkRules = local.virtual_network_rules
       }
     }

@@ -31,3 +31,9 @@ variable "network_acls_bypass" {
   description = "The network ACLs bypass value. Possible values are `AzureServices`, `None`, and `VirtualNetwork`."
   default     = "None"
 }
+
+variable "ip_address_allowlist" {
+  type        = list(string)
+  description = "List of IP addresses to allow access to the storage account"
+  default     = []
+}
