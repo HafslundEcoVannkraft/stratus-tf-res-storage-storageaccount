@@ -25,12 +25,6 @@ The following resources are used by this module:
 
 The following input variables are required:
 
-### <a name="input_pe_subnets"></a> [pe\_subnets](#input\_pe\_subnets)
-
-Description: List of subnets to create private endpoints for
-
-Type: `list(string)`
-
 ### <a name="input_rg_name"></a> [rg\_name](#input\_rg\_name)
 
 Description: Resource group name
@@ -55,6 +49,14 @@ Type: `list(string)`
 
 Default: `[]`
 
+### <a name="input_ip_address_allowlist"></a> [ip\_address\_allowlist](#input\_ip\_address\_allowlist)
+
+Description: List of IP addresses to allow access to the storage account
+
+Type: `list(string)`
+
+Default: `[]`
+
 ### <a name="input_location"></a> [location](#input\_location)
 
 Description: Location of the storage account. Defaults to resource group location.
@@ -70,6 +72,14 @@ Description: The network ACLs bypass value. Possible values are `AzureServices`,
 Type: `string`
 
 Default: `"None"`
+
+### <a name="input_pe_subnets"></a> [pe\_subnets](#input\_pe\_subnets)
+
+Description: List of subnets to create private endpoints for
+
+Type: `list(string)`
+
+Default: `[]`
 
 ## Outputs
 
